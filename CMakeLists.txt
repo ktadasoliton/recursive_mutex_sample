@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(RECURSIVE_MUTEX_SAMPLE_LIB_NAME rmutex )
+project(${RECURSIVE_MUTEX_SAMPLE_LIB_NAME})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_executable(RecursiveMutex src/recursive_mutex.cpp)
