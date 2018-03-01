@@ -1,6 +1,7 @@
 
   // Copyright 2018 Kota Tadaa
 #include <stdio.h>
+#include <thread>
 
 #ifdef _MSC_VER
 #include <Windows.h>
@@ -8,13 +9,29 @@
 
 #include "rmutex/recursive_mutex.h"
 
-void main() {
+static std::thread thread;
+static bool thread_end_flag = false;
+
+int main() {
+  thread = std::thread(MutexThread, &(thread_end_flag));
   while (1) {
 #ifdef _MSC_VER
     Sleep(1000);
 #endif
 
     printf("main\n");
+    Mutex_().lock();
+    Work1();
+    Mutex_().unlock();
+  }
+}
+
+void MutexThread(bool* thread_end_flag) {
+  while (1) {
+#ifdef _MSC_VER
+    Sleep(1000);
+#endif
+    printf("MutexThread\n");
     Mutex_().lock();
     Work1();
     Mutex_().unlock();

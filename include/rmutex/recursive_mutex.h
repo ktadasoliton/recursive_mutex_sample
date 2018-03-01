@@ -3,6 +3,7 @@
 #define RECURSIVEMUTEX_H_
 #include <mutex>
 
+void MutexThread(bool* thread_end_flag);
 void Work1();
 void Work2();
 void Work3();
