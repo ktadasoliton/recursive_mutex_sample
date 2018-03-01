@@ -3,10 +3,7 @@
 #define RECURSIVEMUTEX_H_
 #include <mutex>
 
-void Lock();
-void Unlock();
-
+void Work();
 std::recursive_mutex& Mutex_();
-
 
 #endif  // RECURSIVEMUTEX_H_  //NOLINT

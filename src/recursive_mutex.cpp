@@ -1,24 +1,25 @@
 
   // Copyright 2018 Kota Tadaa
-#include <"stdio.h">
+#include <stdio.h>
+#include <Windows.h>
 #include "rmutex/recursive_mutex.h"
 
 void main() {
-  while:1 {
-    printf("main");
+  while (1) {
+    Sleep(1000);
+    printf("main\n");
     Mutex_().lock();
-    work();
-    Mutex_().Unlock();
+    Work();
+    Mutex_().unlock();
   }
 }
 
-void work() {
+void Work() {
   std::lock_guard<std::recursive_mutex> lock(Mutex_());
-  printf("work");
+  printf("work\n");
 }
 
 std::recursive_mutex& Mutex_() {
   static std::recursive_mutex mutex;
   return mutex;
 }
-
